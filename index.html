@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FreshCart – Online Vegetables & Fruits</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="hbar">
+    <div class="logo" onclick="go('shop')">🥦 FreshCart <span id="backendBadge" style="font-size:11px;font-weight:700;padding:3px 8px;border-radius:12px;background:rgba(255,255,255,0.25);vertical-align:middle;margin-left:6px">Connecting...</span></div>
+    <div class="search"><input id="q" placeholder="Search vegetables, fruits..." oninput="renderShop()"></div>
+    <nav>
+      <button id="nav-shop" onclick="go('shop')">Shop</button>
+      <button id="nav-orders" onclick="go('orders')">My Orders</button>
+      <button id="nav-admin" onclick="go('admin')">Admin</button>
+      <button class="cartbtn" onclick="openCart()">🛒 Cart <span class="badge" id="cartCount">0</span></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="view-shop">
+    <div class="hero">
+      <h1>Fresh from the farm, at your door</h1>
+      <p>Order vegetables and fruits online and pick a delivery slot that suits you.</p>
+      <div class="perks"><span>🌱 Farm fresh</span><span>🚚 Free delivery above ₹299</span><span>⏰ Choose your slot</span><span>↩️ Easy refunds</span></div>
+    </div>
+    <div class="coupon-banner" id="couponBanner"></div>
+    <div class="chips" id="chips"></div>
+    <div class="toolbar">
+      <div class="tb-left">
+        <span class="tb-count" id="productCount">Showing items</span>
+      </div>
+      <div class="tb-right">
+        <div class="sort-wrap">
+          <select id="sortBy" onchange="renderShop()">
+            <option value="featured">✨ Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name-asc">Name: A to Z</option>
+          </select>
+        </div>
+        <label class="filter-checkbox">
+          <input type="checkbox" id="inStockOnly" onchange="renderShop()"> In-stock only
+        </label>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="view-orders" class="hidden">
+    <h2 style="margin-bottom:12px">My Orders</h2>
+    <div id="orderList"></div>
+  </section>
+
+  <section id="view-admin" class="hidden"></section>
+</main>
+
+<footer>FreshCart demo • Data is stored in your browser (localStorage)</footer>
+
+<div id="cartLayer"></div>
+<div id="modalLayer"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
